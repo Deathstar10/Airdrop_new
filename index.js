@@ -12,7 +12,7 @@ const {
 const newPair = new Keypair();
 console.log(newPair);
 
-// every wallet has 2 components public- usedto receive crypto and private key
+// every wallet has 2 components public- used to receive crypto and private key
 const publicKey = new PublicKey(newPair._keypair.publicKey).toString();
 const secretKey = newPair._keypair.secretKey
 
