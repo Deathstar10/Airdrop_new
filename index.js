@@ -23,7 +23,7 @@ const getWalletBalance = async() => {
         const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
         // create a wallet object from the secretKey
-        const myWallet = await Keypair.fromSecretKey(secretKey)
+        const myWallet = Keypair.fromSecretKey(secretKey)
 
         const WalletBalance = await connection.getBalance(
             new PublicKey(myWallet.publicKey)
@@ -39,11 +39,11 @@ const airDropSol = async() => {
     try{
         const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
-        const walletKeyPair = await Keypair.fromSecretKey(secretKey);
+        const walletKeyPair = Keypair.fromSecretKey(secretKey);
         console.log(`-- Airdropping 5 SOL --`);
         const airDropSignature = await connection.requestAirdrop(
             new PublicKey(walletKeyPair.publicKey),
-            5 * LAMPORTS_PER_SOL
+            2 * LAMPORTS_PER_SOL
         );
         await connection.confirmTransaction(airDropSignature);
     } catch(err){
